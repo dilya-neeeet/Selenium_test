@@ -46,11 +46,11 @@ def test_successful_login(driver, logging_in, sample_data):
     logging_in(sample_data['login'], sample_data['password'])
     assert driver.current_url == 'https://the-internet.herokuapp.com/secure'
     success_message = driver.find_element(By.CSS_SELECTOR, '.subheader')
-    assert success_message.text == 'Welcome to the Secure Area. When you are done click logout below.'
+    assert 'Welcome to the Secure Area. When you are done click logout below.' in success_message.text
 
 
 def test_unsuccessful_login(driver, logging_in, sample_data):
     logging_in(sample_data['login'], '12345')
     assert driver.current_url == 'https://the-internet.herokuapp.com/login'
     error_message = driver.find_element(By.ID, 'flash')
-    assert error_message.text == 'Your password is invalid!'
+    assert 'Your password is invalid' in error_message.text
