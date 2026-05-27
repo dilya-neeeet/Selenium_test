@@ -53,4 +53,4 @@ def test_unsuccessful_login(driver, logging_in, sample_data):
     logging_in(sample_data['login'], '12345')
     assert driver.current_url == 'https://the-internet.herokuapp.com/login'
     error_message = driver.find_element(By.ID, 'flash')
-    assert error_message.text == 'Your password is invalid'
+    assert error_message.text == 'Your password is invalid!'
